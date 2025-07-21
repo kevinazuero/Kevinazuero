@@ -13,7 +13,7 @@ Trabajo principalmente con Python y herramientas de visualización para realizar
 ---
 
 ## Proyectos 
-- [Clasificación de madurez de bananas con diferentes modelos CNN](URL): analisis comparativo de varios modelos CNN
+- [Clasificación de madurez de bananas con diferentes modelos CNN](https://github.com/kevinazuero/banana-classificator-CNN-Models.git): analisis comparativo de varios modelos CNN
 - [Traductor de señas con  IA](https://github.com/kevinazuero/Proyect-sign-language-translator.git): pagina web que sirve como interfaz para entrenar y probar el modelo.
 
 ---
