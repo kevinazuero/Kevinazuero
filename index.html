@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kevin Azuero - Data Scientist & Software Engineer</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 60px 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            50% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+            100% { transform: translateX(200%) translateY(200%) rotate(45deg); }
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            font-size: 60px;
+            color: white;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover .project-image {
+            transform: scale(1.05);
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: #666;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .tagline {
+            font-size: 1.1rem;
+            color: #555;
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: #2c3e50;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title i {
+            color: #667eea;
+        }
+
+        .grid {
+            display: grid;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .two-column {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 15px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .project-card:hover::before {
+            left: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2);
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .project-description {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .project-link:hover {
+            color: #764ba2;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .skill-category {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 15px;
+            padding: 25px;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-3px);
+        }
+
+        .skill-category h4 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            color: #555;
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .skill-list li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-size: 0.8rem;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #2c3e50;
+            text-decoration: none;
+            padding: 15px 25px;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .contact-item:hover {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .soft-skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .soft-skill-item {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .soft-skill-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.2);
+        }
+
+        .soft-skill-item i {
+            font-size: 2.5rem;
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .soft-skill-item h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .soft-skill-item p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            header {
+                padding: 40px 20px;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .section {
+                padding: 25px;
+            }
+
+            .contact-info {
+                gap: 15px;
+            }
+
+            .contact-item {
+                padding: 12px 20px;
+                font-size: 0.9rem;
+            }
+        }
+
+        .floating-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            animation: float 6s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            50% { transform: translateY(-100px) rotate(180deg); opacity: 0.5; }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-particles"></div>
+
+    <div class="container">
+        <header>
+            <h1>Kevin Azuero</h1>
+            <p class="subtitle">Data Scientist & Software Engineer</p>
+            <p class="tagline">Transforming data into actionable insights through statistical analysis, effective visualizations, and interpretable machine learning models</p>
+        </header>
+
+        <section class="section">
+            <h2 class="section-title">
+                <i class="fas fa-user-tie"></i>
+                Perfil Profesional
+            </h2>
+            <p>Me especializo en extraer valor de los datos para apoyar la toma de decisiones empresariales. Mis principales herramientas son Python y bibliotecas de visualización para realizar análisis exploratorio de datos, construir modelos predictivos y comunicar resultados de manera clara tanto a audiencias técnicas como no técnicas.</p>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">
+                <i class="fas fa-rocket"></i>
+                Proyectos Destacados
+            </h2>
+            <div class="grid two-column">
+                <div class="project-card">
+                    <!-- Imagen del proyecto -->
+                    <img src="images/banana-cnn.png" alt="Clasificación de Plátanos CNN" class="project-image" onerror="this.style.display='none'">
+                    <h3 class="project-title">Clasificación de Madurez de Plátanos usando CNN</h3>
+                    <p class="project-description">Análisis comparativo de diferentes arquitecturas de redes neuronales convolucionales para clasificar el estado de madurez de plátanos, implementando técnicas de transfer learning y fine-tuning.</p>
+                    <a href="https://github.com/kevinazuero/banana-classificator-CNN-Models.git" class="project-link" target="_blank">
+                        <i class="fab fa-github"></i> Ver en GitHub
+                    </a>
+                </div>
+                <div class="project-card">
+                    <!-- Imagen del proyecto -->
+                    <img src="images/sign-language.png" alt="Traductor Lenguaje de Señas" class="project-image" onerror="this.style.display='none'">
+                    <h3 class="project-title">Traductor de Lenguaje de Señas con IA</h3>
+                    <p class="project-description">Aplicación web desarrollada con Django para entrenar y probar modelos de machine learning que traducen lenguaje de señas a texto, mejorando la accesibilidad comunicacional.</p>
+                    <a href="https://github.com/kevinazuero/Proyect-sign-language-translator.git" class="project-link" target="_blank">
+                        <i class="fab fa-github"></i> Ver en GitHub
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">
+                <i class="fas fa-cogs"></i>
+                Habilidades Técnicas
+            </h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4><i class="fas fa-chart-line"></i> Data Science & Análisis</h4>
+                    <ul class="skill-list">
+                        <li><strong>Python:</strong> Pandas, NumPy, Scikit-learn</li>
+                        <li><strong>Visualización:</strong> Matplotlib, Seaborn</li>
+                        <li><strong>ML:</strong> Clasificación, Regresión, Clustering</li>
+                        <li><strong>Herramientas:</strong> Jupyter Notebook/Lab</li>
+                        <li><strong>BI:</strong> Power BI</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4><i class="fas fa-robot"></i> Machine Learning</h4>
+                    <ul class="skill-list">
+                        <li>Modelos supervisados y no supervisados</li>
+                        <li>Transfer Learning (VGG16, CNN)</li>
+                        <li>Optimización y validación cruzada</li>
+                        <li>Métricas de evaluación</li>
+                        <li>Fine-tuning de modelos preentrenados</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4><i class="fas fa-globe"></i> Desarrollo Web</h4>
+                    <ul class="skill-list">
+                        <li><strong>Django:</strong> Full Stack development</li>
+                        <li>Arquitectura MVC</li>
+                        <li>Bases de datos relacionales</li>
+                        <li>APIs RESTful</li>
+                        <li>Control de versiones con Git</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h4><i class="fas fa-database"></i> Otras Tecnologías</h4>
+                    <ul class="skill-list">
+                        <li><strong>SQL:</strong> Consultas y gestión de datos</li>
+                        <li><strong>Excel:</strong> Automatización y reportes</li>
+                        <li><strong>GitHub:</strong> Gestión de proyectos</li>
+                        <li>Documentación técnica</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">
+                <i class="fas fa-users"></i>
+                Soft Skills
+            </h2>
+            <div class="soft-skills">
+                <div class="soft-skill-item">
+                    <i class="fas fa-handshake"></i>
+                    <h4>Colaboración en Equipo</h4>
+                    <p>Experiencia en proyectos grupales con coordinación efectiva de tareas y roles diversos</p>
+                </div>
+                <div class="soft-skill-item">
+                    <i class="fas fa-comments"></i>
+                    <h4>Comunicación Efectiva</h4>
+                    <p>Capacidad para explicar conceptos técnicos de manera clara y estructurada</p>
+                </div>
+                <div class="soft-skill-item">
+                    <i class="fas fa-lightbulb"></i>
+                    <h4>Pensamiento Analítico</h4>
+                    <p>Resolución de problemas complejos con evaluación crítica de resultados</p>
+                </div>
+                <div class="soft-skill-item">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h4>Aprendizaje Autodidacta</h4>
+                    <p>Investigación y aplicación autónoma de nuevas técnicas y herramientas</p>
+                </div>
+                <div class="soft-skill-item">
+                    <i class="fa-solid fa-bullseye"></i>
+                    <h4>Orientación a Resultados</h4>
+                    <p>Enfoque en soluciones que se alineen con las necesidades del usuario final</p>
+                </div>
+                <div class="soft-skill-item">
+                    <i class="fas fa-file-alt"></i>
+                    <h4>Documentación Técnica</h4>
+                    <p>Redacción clara de documentación para respaldar decisiones en proyectos</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">
+                <i class="fas fa-envelope"></i>
+                Contacto
+            </h2>
+            <div class="contact-info">
+                <a href="https://www.linkedin.com/in/kevin-azuero" class="contact-item" target="_blank">
+                    <i class="fab fa-linkedin"></i>
+                    LinkedIn
+                </a>
+                <a href="mailto:azuerokevin421@gmail.com" class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    Email
+                </a>
+                <a href="https://github.com/kevinazuero" class="contact-item" target="_blank">
+                    <i class="fab fa-github"></i>
+                    GitHub
+                </a>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Crear partículas flotantes
+        function createParticles() {
+            const container = document.querySelector('.floating-particles');
+            const particleCount = 50;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                container.appendChild(particle);
+            }
+        }
+
+        // Animaciones suaves al scroll
+        function handleScrollAnimations() {
+            const sections = document.querySelectorAll('.section');
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }
+                    });
+                },
+                { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+            );
+
+            sections.forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(30px)';
+                section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(section);
+            });
+        }
+
+        // Inicializar efectos
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+            handleScrollAnimations();
+        });
+
+        // Efecto de typing en el título
+        function typeEffect() {
+            const title = document.querySelector('h1');
+            const text = title.textContent;
+            title.textContent = '';
+
+            let i = 0;
+            const timer = setInterval(() => {
+                if (i < text.length) {
+                    title.textContent += text.charAt(i);
+                    i++;
+                } else {
+                    clearInterval(timer);
+                }
+            }, 100);
+        }
+
+        // Inicializar efecto de typing después de un pequeño delay
+        setTimeout(typeEffect, 500);
+    </script>
+</body>
+</html>
