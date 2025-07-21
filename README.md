@@ -1,6 +1,6 @@
 # Kevin Azuero
 
-Software Engineering student focused on **Data Analysis** and **Data Science**.  
+Software Engineering focused on **Data Analysis** and **Data Science**.  
 Passionate about turning data into actionable insights through statistical analysis, effective visualizations, and interpretable machine learning models.
 
 ---
