@@ -35,5 +35,5 @@ Trabajo principalmente con Python y herramientas de visualización para realizar
 
 ## Contacto
 
-- 🌐 [LinkedIn](www.linkedin.com/in/kevin-azuero)  
+- 🌐 [LinkedIn](https://www.linkedin.com/in/kevin-azuero)
 - 📧 Email: azuerokevin421@gmail.com
